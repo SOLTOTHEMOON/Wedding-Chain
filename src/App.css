@@ -1,38 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Modern+Antiqua&display=swap');
+
 .App {
-  text-align: center;
+
+  color: #FFDEB3;
+  font-family: 'Modern Antiqua', cursive;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.peacock-img {
+  height: 500px;
+
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 3rem;
+  width: 50%;
+  color: #FFDEB3;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+.input-box {
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-box input {
+  border-style: none;
+
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #FFDEB3;
+  border-bottom: 3px solid #FFDEB3;
+  padding: 15px;
+  font-family: 'Modern Antiqua', cursive;
+
+  letter-spacing: 3.2px;
+  width: 100%;
+  position: relative;
+}
+
+.input-box label {
+  color: #FFDEB3;
+  position: absolute;
+  padding: 15px 0;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+  color: #e4b16e;
+  font-size: 0.9rem;
+  top: -26px;
+  transition: 0.5s;
+}
+
+
+button {
+  margin: 1rem;
+  background: #FFDEB3;
+  color: #6a491d;
+  border-spacing: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #e4b16e;
+  transition: 0.3s;
+}
+
+a {
+  text-decoration: none;
+  color: #6a491d;
+
 }
