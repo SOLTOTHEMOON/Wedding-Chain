@@ -12,12 +12,12 @@ class ArweaveMarriage {
   updated_at: string | undefined;
 
   constructor(
-    spouse1: string | undefined,
-    spouse2: string | undefined,
-    status: number | undefined,
-    consent: boolean | undefined,
-    created_at: string | undefined,
-    updated_at: string | undefined
+    spouse1?: string | undefined,
+    spouse2?: string | undefined,
+    status?: number | undefined,
+    consent?: boolean | undefined,
+    created_at?: string | undefined,
+    updated_at?: string | undefined
   ) {
     this.spouse1 = spouse1;
     this.spouse2 = spouse2;
@@ -74,10 +74,8 @@ class ArweaveService {
           { decode: true, string: true }
         );
 
-        const marraigeData: ArweaveMarriage = JSON.parse(
-          //@ts-ignore
-          new TextDecoder().decode(transaction)
-        );
+        //@ts-ignore
+        const marraigeData: ArweaveMarriage = JSON.parse(transaction);
 
         arweaveMarriageData.push(marraigeData);
       } catch (err) {
@@ -90,4 +88,4 @@ class ArweaveService {
 }
 
 const arweaveService = new ArweaveService();
-export default arweaveService;
+export { ArweaveMarriage, arweaveService };

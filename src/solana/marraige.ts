@@ -14,6 +14,7 @@ import {
   TransactionInstruction,
 } from "@solana/web3.js";
 import { programId } from "./program";
+import { ArweaveMarriage, arweaveService } from "../arweave/arweave";
 
 const MARRIAGE_COUNT = 20;
 export const DUMMY_TX_ID = "0000000000000000000000000000000000000000000";
@@ -38,10 +39,9 @@ const MarriageSchema = new Map([
 ]);
 
 class MarriageService {
-    MARRIAGE_SIZE: number = 0;
+  MARRIAGE_SIZE: number = 0;
   setMarriageDataSize() {
-    const sampleMarriage: Array<Marriage> =
-      this.getDefaultMarriage();
+    const sampleMarriage: Array<Marriage> = this.getDefaultMarriage();
 
     let length = 0;
     for (let i = 0; i < sampleMarriage.length; i++) {
@@ -65,48 +65,45 @@ class MarriageService {
 
   async getAccountMarriageHistory(
     connection: Connection,
-    pubKeyStr: string
+    accountKey: string
   ): Promise<Array<Marriage>> {
-    const sentPubkey = new PublicKey(pubKeyStr);
-    const sentAccount = await connection.getAccountInfo(sentPubkey);
+    const marriageAccountKey = new PublicKey(accountKey);
+    const sentAccount = await connection.getAccountInfo(marriageAccountKey);
     // get and deserialize solana account data and receive txid
     // go to arweave and query using these txid
     // parse json and return ChatMessages
     if (!sentAccount) {
-      throw Error(`Account ${pubKeyStr} does not exist`);
+      throw Error(`Account ${accountKey} does not exist`);
     }
     const archive_id = lo.cstr("archive_id");
-    const dataStruct = lo.struct(
-      [archive_id, lo.seq(lo.u8(), 2)],
-      "Marriage"
-    );
+    const dataStruct = lo.struct([archive_id, lo.seq(lo.u8(), 2)], "Marriage");
     const ds = lo.seq(dataStruct, MARRIAGE_COUNT);
-    const messages = ds.decode(sentAccount.data);
-    return messages;
+    const marriages = ds.decode(sentAccount.data);
+    return marriages;
   }
 
   async getMarriageHistory(
     connection: Connection,
     sentChatPubkeyStr: string
   ): Promise<Array<Marriage>> {
-    const messages = await this.getAccountMarriageHistory(
+    const marriages = await this.getAccountMarriageHistory(
       connection,
       sentChatPubkeyStr
     );
-    console.log("getMarriageHistory", messages);
-    return messages;
+    console.log("getMarriageHistory", marriages);
+    return marriages;
   }
 
   async getMarriageReceivedHistory(
     connection: Connection,
     walletChatPubkeyStr: string
   ): Promise<Array<Marriage>> {
-    const messages = await this.getAccountMarriageHistory(
+    const marriages = await this.getAccountMarriageHistory(
       connection,
       walletChatPubkeyStr
     );
-    console.log("getMarriageReceivedHistory", messages);
-    return messages;
+    console.log("getMarriageReceivedHistory", marriages);
+    return marriages;
   }
 
   async sendMarriage(
@@ -118,23 +115,20 @@ class MarriageService {
     console.log("start sendMarriage");
     const destPubkey = new PublicKey(destPubkeyStr);
 
-    const messageObj = new Marriage();
-    messageObj.archive_id = this.getTxIdFromArweave(txid);
+    const marriageObj = new Marriage();
+    marriageObj.archive_id = this.getTxIdFromArweave(txid);
 
-    const messageInstruction = new TransactionInstruction({
+    const marriageInstruction = new TransactionInstruction({
       keys: [{ pubkey: destPubkey, isSigner: false, isWritable: true }],
       programId,
-      data: Buffer.from(serialize(MarriageSchema, messageObj)),
+      data: Buffer.from(serialize(MarriageSchema, marriageObj)),
     });
     const trans = await setPayerAndBlockhashTransaction(
       wallet,
-      messageInstruction
+      marriageInstruction
     );
     const signature = await signAndSendTransaction(wallet, trans);
-    const result = await connection.confirmTransaction(
-      signature,
-      "singleGossip"
-    );
+    const result = await connection.confirmTransaction(signature, "confirmed");
     console.log("end sendMessage", result);
     return result;
   }
@@ -165,7 +159,48 @@ class MarriageService {
     console.log("created_on", created_on);
     return created_on;
   }
-}
 
-const marriageServiceService = new MarriageService();
-export default marriageServiceService;
+  async getArweaveMarriages(
+    marriages: Array<Marriage>,
+  ): Promise<Array<ArweaveMarriage>> {
+
+    marriages.forEach((msg) => {
+      msg.archive_id = msg.archive_id.replace("+", "");
+      msg.archive_id = msg.archive_id.replace(/[\u0010]/g, "");
+    });
+    const filteredmarriages = marriages.filter(
+      (msg) => msg.archive_id && !this.isAllZero(msg.archive_id)
+    );
+
+    console.log("filteredmarriages", filteredmarriages);
+    const arweaveData = await arweaveService.getData(filteredmarriages);
+
+    console.log("arweaveData", arweaveData);
+
+    const arweaveMarriages = arweaveData.map((msg) => {
+      return new ArweaveMarriage(
+        msg.spouse1,
+        msg.spouse2,
+        msg.status,
+        msg.consent,
+        msg.created_at,
+        msg.updated_at
+      );
+    });
+
+    console.log("arweaveMarriages", arweaveMarriages);
+
+    return arweaveMarriages;
+  }
+
+  isAllZero(str: string): boolean {
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] !== "0") {
+        return false;
+      }
+    }
+    return true;
+  }
+}
+const marriageService = new MarriageService();
+export default marriageService;

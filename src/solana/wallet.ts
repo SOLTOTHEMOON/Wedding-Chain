@@ -16,7 +16,7 @@ export interface WalletAdapter extends EventEmitter {
   disconnect: () => any;
 }
 
-const cluster = "http://localhost:8899";
+const cluster = "https://api.devnet.solana.com";
 const connection = new Connection(cluster, "confirmed");
 const wallet: WalletAdapter = new Wallet("https://www.sollet.io", cluster);
 
@@ -48,7 +48,7 @@ export async function sendMoney(
     let trans = await setPayerAndBlockhashTransaction(wallet, instruction);
 
     let signature = await signAndSendTransaction(wallet, trans);
-    let result = await connection.confirmTransaction(signature, "singleGossip");
+    let result = await connection.confirmTransaction(signature, "confirmed");
     console.log("end sendMoney", result);
   } catch (e) {
     console.warn("Failed", e);

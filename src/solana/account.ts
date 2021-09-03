@@ -6,7 +6,7 @@ import {
   WalletAdapter,
 } from "./wallet";
 
-export async function getChatMessageAccountPubkey(
+export async function getMarriageAccountPubkey(
   connection: Connection,
   wallet: WalletAdapter,
   space: number,
@@ -15,44 +15,46 @@ export async function getChatMessageAccountPubkey(
   if (!wallet.publicKey) {
     throw Error("Wallet has no PublicKey");
   }
-  let chatAccountPubkey: PublicKey | null = null;
+  let marriageAccountPubkey: PublicKey | null = null;
   if (!reset) {
     const existingPubkeyStr = localStorage.getItem(
       wallet.publicKey.toBase58() ?? ""
     );
     if (existingPubkeyStr) {
-      chatAccountPubkey = new PublicKey(existingPubkeyStr);
-      console.log("chat account found");
-      return chatAccountPubkey;
+      marriageAccountPubkey = new PublicKey(existingPubkeyStr);
+      console.log("Marriage Account not found");
+      return marriageAccountPubkey;
     }
   }
-  console.log("start creating new chat account");
-  const CHAT_SEED = "chat" + Math.random().toString();
-  chatAccountPubkey = await PublicKey.createWithSeed(
+  console.log("start creating new Marriage account");
+  const MARRIAGE_SEED = "marriage" + Math.random().toString();
+  marriageAccountPubkey = await PublicKey.createWithSeed(
     wallet.publicKey,
-    CHAT_SEED,
+    MARRIAGE_SEED,
     programId
   );
-  console.log("new chat account pubkey", chatAccountPubkey.toBase58());
+  console.log("new marriage account pubkey", marriageAccountPubkey.toBase58());
   const lamports = await connection.getMinimumBalanceForRentExemption(space);
+  console.log("minimum lamports for rent exemption", lamports);
   const instruction = SystemProgram.createAccountWithSeed({
     fromPubkey: wallet.publicKey,
     basePubkey: wallet.publicKey,
-    seed: CHAT_SEED,
-    newAccountPubkey: chatAccountPubkey,
+    seed: MARRIAGE_SEED,
+    newAccountPubkey: marriageAccountPubkey,
     lamports,
     space,
     programId,
   });
+  console.log("instruction", instruction);
   let trans = await setPayerAndBlockhashTransaction(wallet, instruction);
   console.log("setPayerAndBlockhashTransaction", trans);
   let signature = await signAndSendTransaction(wallet, trans);
   console.log("signAndSendTransaction", signature);
-  let result = await connection.confirmTransaction(signature, "singleGossip");
-  console.log("new chat account created", result);
+  let result = await connection.confirmTransaction(signature, "confirmed");
+  console.log("new marraige account created", result);
   localStorage.setItem(
     wallet.publicKey.toBase58(),
-    chatAccountPubkey.toBase58()
+    marriageAccountPubkey.toBase58()
   );
-  return chatAccountPubkey;
+  return marriageAccountPubkey;
 }
