@@ -1,0 +1,38 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 80%;
+  padding: 5rem;
+  margin: 2rem auto;
+  box-shadow: black 0.1rem 0.1rem 0.2rem;
+}
+
+.header-text {
+  font-size: 26px;
+  font-weight: 400;
+  padding: 2rem;
+}
+
+.body-text {
+  font-size: 22px;
+  font-weight: 500;
+  padding: 2rem;
+  text-align: center;
+}
+
+.caption {
+  font-size: 28px;
+  font-weight: 300;
+  padding: 2rem;
+  font-style: italic;
+}

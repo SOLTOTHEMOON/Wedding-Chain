@@ -56,8 +56,8 @@ class ArweaveService {
     await this.arweave.transactions.sign(transaction, this.walletKey!);
     await this.arweave.transactions.post(transaction);
     console.log("posted transaction");
-    await this.testWeave!.mine(); // need this to force immediate mine of related block
-    console.log("forced mine");
+    // await this.testWeave!.mine(); // need this to force immediate mine of related block
+    // console.log("forced mine");
     const status = await this.arweave.transactions.getStatus(transaction.id);
     console.log("saveData status", status);
     return transaction.id;
