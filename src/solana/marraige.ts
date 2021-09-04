@@ -161,8 +161,10 @@ class MarriageService {
 
     marriages.forEach((msg) => {
       msg.archive_id = msg.archive_id.replace("+", "");
-      msg.archive_id = msg.archive_id.replace(/[\u0010]/g, "");
+      // msg.archive_id = msg.archive_id.replace([/[^\u0000-\u007F]+/g , "");
     });
+    marriages[0]= new Marriage({archive_id: "0"});
+    marriages[1]= new Marriage({archive_id: "0"});
     const filteredmarriages = marriages.filter(
       (msg) => msg.archive_id && !this.isAllZero(msg.archive_id)
     );
