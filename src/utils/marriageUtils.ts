@@ -2,7 +2,6 @@ import { Connection } from "@solana/web3.js";
 import { ArweaveMarriage, arweaveService } from "../arweave/arweave";
 import marriageService from "../solana/marraige";
 import { WalletAdapter } from "../solana/wallet";
-import React, { useContext, createContext } from "react";
 
 export const makeMarriageTrans = async (
   myAccountKey: string,
@@ -31,9 +30,9 @@ export const makeMarriageTrans = async (
     txid
   );
 
-  if (status == 0) {
+  if (status === 0) {
     console.log("Consent Transaction sent successfully", result);
-  } else if (status == 1) {
+  } else if (status === 1) {
     console.log("Marriage Transaction sent successfully", result);
   }
 };

@@ -1,17 +1,10 @@
 body {
-  min-width: 100vw;
-  min-height: 100vh;
-
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 
-  /* background: repeat url('./assets/background.svg'); */
-  /* background-color: #214A49; */
-
-  /* border: 80px solid; */
-  /* border-image-width: 80px; */
-  /* border-image-slice: 30% 10%; */
-  /* border-image-source: url('./assets/corner.svg'); */
+  background: repeat url('./assets/background.svg');
+  background-color: #214A49;
+  color: #ffdeb3;
 
 }

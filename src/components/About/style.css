@@ -1,0 +1,33 @@
+.about-container,
+.benefits-container {
+  min-height: 100vh;
+  margin: auto;
+}
+
+.section-heading {
+  font-size: 4rem;
+}
+.section-description {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.benefit-card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.about-card {
+  border-radius: 15px 50px;
+  border: 10px solid #51b5a5;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  background-color: #ffefe0;
+  color: #214a49;
+  width: 33.33%;
+}
+
+.about-img {
+  width: 100px;
+  height: auto;
+  margin: 0.5rem auto;
+}

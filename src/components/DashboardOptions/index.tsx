@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AccountContext, AccountDetails } from "../../utils/accountContext";
 import "./style.css";
 
@@ -7,7 +7,6 @@ import {
   makeMarriageTrans,
 } from "../../utils/marriageUtils";
 import { ArweaveMarriage } from "../../arweave/arweave";
-import { Connection } from "@solana/web3.js";
 
 interface IDashboardOption1Props {
   account: AccountDetails;

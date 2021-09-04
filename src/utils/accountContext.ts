@@ -1,5 +1,5 @@
 import { Connection } from "@solana/web3.js";
-import React, { useContext, createContext } from "react";
+import React, { createContext } from "react";
 import { WalletAdapter } from "../solana/wallet";
 
 interface Account {
@@ -13,7 +13,7 @@ const AccountContext = createContext<{
   setAccount: Function;
 }>({
   account: undefined,
-  setAccount: () => {},
+  setAccount: () => { },
 });
 
 export { AccountContext };

@@ -3,6 +3,8 @@
 .App {
   color: #ffdeb3;
   font-family: "Modern Antiqua", cursive;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .header {
@@ -11,8 +13,8 @@
   align-items: center;
 }
 
-.peacock-img {
-  height: 500px;
+.container {
+  min-height: 90vh;
 }
 
 .App-header {
@@ -23,11 +25,12 @@
 
 .input-box {
   position: relative;
+  width: 100%;
 }
 
 .input-box input {
   border-style: none;
-
+  width: 100%;
   font-size: 1.5rem;
   background-color: transparent;
   border: none;
@@ -61,7 +64,6 @@
 }
 
 button {
-  margin: 1rem;
   background: #ffdeb3;
   color: #6a491d;
   border-spacing: none;
