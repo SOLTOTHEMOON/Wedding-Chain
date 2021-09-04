@@ -28,7 +28,7 @@ export default function About() {
     return (
 
         <>
-            <section className="about-container">
+            {/* <section className="about-container">
 
                 <h1 className="section-heading">
                     What we do?
@@ -48,9 +48,11 @@ export default function About() {
                     marraige documnented with us forever.
                 </p>
 
-            </section>
+            </section> */}
 
             <section className="benefits-container">
+                <div className="circle-2"></div>
+
                 <h1 className="section-heading">
                     What makes us different?
                     <sub style={{ fontSize: '15px', fontWeight: 100, }}>secret is blockchain</sub>

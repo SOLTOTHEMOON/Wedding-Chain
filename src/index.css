@@ -2,9 +2,9 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 
-  background: repeat url('./assets/background.svg');
-  background-color: #214A49;
-  color: #ffdeb3;
-
+  /* background: repeat url("./assets/background.svg"); */
+  background-color: #75cfb8;
+  color: #000;
 }

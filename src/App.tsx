@@ -9,7 +9,8 @@ import { Dashboard } from "./Pages/DashBoard";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Footer from "./components/Footer";
-
+import { Route, Switch } from "react-router-dom";
+import Header from "./components/Header";
 function App() {
 
   const [accountInfo, setAccount] = useState<AccountDetails>();
@@ -43,12 +44,27 @@ function App() {
     <AccountContext.Provider value={{ account: accountInfo, setAccount }}>
       <div className="App">
 
-        {/* <Dashboard /> */}
-        <Hero />
-        <About />
+        <Header />
+        <Switch>
+
+          <Route exact path="/">
+            <Hero />
+            <About />
+          </Route>
+
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+
+          <Route path="*">
+            <p>PAge not Found</p>
+          </Route>
+        </Switch>
         <Footer />
+        {/* <div>{accountInfo?.accountPubKey}</div> */}
+        {/* <Dashboard /> */}
+
         {/* <div>
-      <div>{accountInfo?.accountPubKey}</div>
       <button onClick={connectSollet}>Connect wallet</button>
       </div>
      */}

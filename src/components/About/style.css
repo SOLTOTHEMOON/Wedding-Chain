@@ -2,6 +2,12 @@
 .benefits-container {
   min-height: 100vh;
   margin: auto;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .section-heading {
@@ -18,11 +24,10 @@
 }
 .about-card {
   border-radius: 15px 50px;
-  border: 10px solid #51b5a5;
+  border: 5px solid #bbdfc8;
   padding: 1rem;
   margin: 0 0.5rem;
-  background-color: #ffefe0;
-  color: #214a49;
+  background-color: #f0e5d8;
   width: 33.33%;
 }
 
@@ -30,4 +35,16 @@
   width: 100px;
   height: auto;
   margin: 0.5rem auto;
+}
+.circle-2 {
+  position: absolute;
+  /* border-radius: 50%; */
+  z-index: -8;
+  left: -100px;
+  top: 70px;
+  transform: rotate(-2.5deg);
+  height: 50vw;
+  width: 110vw;
+  background-color: #ffc478;
+  box-shadow: -9px 8px 19px 16px rgba(59, 59, 59, 0.285);
 }

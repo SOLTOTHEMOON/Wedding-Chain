@@ -1,0 +1,31 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pub-key {
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+.pub-key > p {
+  width: 120px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.copy-icon {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.logo-wrapper {
+  font-style: italic;
+}
+.dashboard-link:hover {
+  /* transition: all 0.3s ease-in-out; */
+
+  color: rgb(255, 130, 92);
+  text-underline-position: under;
+  text-decoration: rgb(255, 130, 92) wavy underline;
+}

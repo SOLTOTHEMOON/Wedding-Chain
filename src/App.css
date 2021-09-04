@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Modern+Antiqua&display=swap");
 
 .App {
-  color: #ffdeb3;
+  color: #2c2c2c;
   font-family: "Modern Antiqua", cursive;
   width: 90%;
   margin: 0 auto;
@@ -20,7 +20,7 @@
 .App-header {
   font-size: 3rem;
   width: 50%;
-  color: #ffdeb3;
+  color: #75cfb8;
 }
 
 .input-box {
