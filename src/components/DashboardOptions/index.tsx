@@ -24,7 +24,7 @@ interface IDashboardTimelineProps {
 }
 
 export const DashboardOptions: React.FunctionComponent<{}> = () => {
-  const [spouseAccountKey, setSpouseAccountKey] = useState<string>("");
+  const [spouseAccountKey, setSpouseAccountKey] = useState<string>("H4ZZgB1oKRMgZpGrXEC1SyBmwrxqNG2q1xNLixwqCanh");
 
   return (
     <AccountContext.Consumer>
@@ -51,14 +51,14 @@ export const DashboardOptions1: React.FunctionComponent<IDashboardOption1Props> 
     const sendConsent = () => {
       console.log({ account, spouseAccountKey, setSpouseAccountKey });
 
-      makeMarriageTrans(
-        account.accountPubKey,
-        spouseAccountKey,
-        0,
-        true,
-        account.connection.current!,
-        account.wallet
-      );
+      // makeMarriageTrans(
+      //   account.accountPubKey,
+      //   spouseAccountKey,
+      //   0,
+      //   true,
+      //   account.connection.current!,
+      //   account.wallet
+      // );
     };
 
     return (
@@ -94,14 +94,14 @@ export const DashboardOptions1: React.FunctionComponent<IDashboardOption1Props> 
 export const DashboardOptions2: React.FunctionComponent<IDashboardOption2Props> =
   ({ account, spouseAccountKey }) => {
     const marry = () => {
-      makeMarriageTrans(
-        account.accountPubKey,
-        spouseAccountKey,
-        1,
-        true,
-        account.connection.current!,
-        account.wallet
-      );
+      // makeMarriageTrans(
+      //   account.accountPubKey,
+      //   spouseAccountKey,
+      //   1,
+      //   true,
+      //   account.connection.current!,
+      //   account.wallet,
+      // );
     };
     return (
       <div className="card-container">

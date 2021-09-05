@@ -6,6 +6,10 @@ import { Marriage } from "../solana/marraige";
 class ArweaveMarriage {
   spouse1: string | undefined;
   spouse2: string | undefined;
+  spouse1Name: string | undefined;
+  spouse2Name: string | undefined;
+  spouse1pubKey: string | undefined;
+  spouse2pubKey: string | undefined;
   status: number | undefined;
   consent: boolean | undefined;
   created_at: string | undefined;
@@ -14,6 +18,10 @@ class ArweaveMarriage {
   constructor(
     spouse1?: string | undefined,
     spouse2?: string | undefined,
+    spouse1Name?: string | undefined,
+    spouse2Name?: string | undefined,
+    spouse1pubKey?: string | undefined,
+    spouse2pubKey?: string | undefined,
     status?: number | undefined,
     consent?: boolean | undefined,
     created_at?: string | undefined,
@@ -21,6 +29,10 @@ class ArweaveMarriage {
   ) {
     this.spouse1 = spouse1;
     this.spouse2 = spouse2;
+    this.spouse1Name = spouse1Name;
+    this.spouse2Name = spouse2Name;
+    this.spouse1pubKey = spouse1pubKey;
+    this.spouse2pubKey = spouse2pubKey;
     this.status = status;
     this.consent = consent;
     this.created_at = created_at;
@@ -69,7 +81,7 @@ class ArweaveService {
       try {
         const marraige = marraiges[i];
         console.log("marraige", marraige);
-        console.log("marriage archive", marraige.archive_id.length)
+        console.log("marriage archive", marraige.archive_id.length);
         const transaction = await this.arweave.transactions.getData(
           marraige.archive_id,
           { decode: true, string: true }
@@ -79,7 +91,6 @@ class ArweaveService {
         const marraigeData: ArweaveMarriage = JSON.parse(transaction);
         console.log("marraigeData", marraigeData);
         arweaveMarriageData.push(marraigeData);
-
       } catch (err) {
         console.log("getData error", err);
       }
