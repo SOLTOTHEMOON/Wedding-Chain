@@ -1,46 +1,177 @@
-# Getting Started with Create React App
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/SOLTOTHEMOON/Wedding-Chain">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-In the project directory, you can run:
+  <h3 align="center">Shaadi Dapp</h3>
 
-### `yarn start`
+  <p align="center">
+    Register your marriage on the <b>Solana</b> blockchain forever<br/>You wont have to wait in line at the registrar's office because solana is superfast 🚀
+    <br />
+    <a href="https://github.com/SOLTOTHEMOON/Wedding-Chain#readme"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/SOLTOTHEMOON/Wedding-Chain">View Demo</a>
+    ·
+    <a href="https://github.com/SOLTOTHEMOON/Wedding-Chain/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/SOLTOTHEMOON/Wedding-Chain/issues">Request Feature</a>
+  </p>
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[![Shaadi Dapp][product-screenshot]](https://example.com)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Shaadi Dapp helps married couples register their marriage on the Solana blockchain making it easily verifiable as Marriage proof. It also acts as a single source of truth and can protect marriage authenticity as the transaction cannot be modified or faked.
 
-### `yarn eject`
+Not convinced yet? Here's why you should try it:
+* Why not? Crypto is trending and its really cool
+* It's certainly better than graffiting your names on public places, cooler, lasts forever and nobody can erase it
+* You get a really nice marriage certificate
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Built With
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* [Solana](https://docs.solana.com/)
+* [Arweave](https://www.arweave.org/)
+* [React](https://reactjs.org)
+* [Solana-Web3Js](https://solana-labs.github.io/solana-web3.js/)
+* [TypeScript](https://www.typescriptlang.org/)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- GETTING STARTED -->
+## Getting Started
+
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+* To work with the TestWeave, you need to install a local testnet. To do so, follow the instructions here: https://github.com/ArweaveTeam/testweave-docker
+* Install [solana-cli](https://docs.solana.com/cli/install-solana-cli-tools)
+* Install [rust](https://www.rust-lang.org/)
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/SOLTOTHEMOON/Wedding-Chain.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start project
+   ```sh
+   npm start
+   ```
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+
+
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Finding Teammates
+- [x] Learning Rust
+- [x] Understanding Solana terms 
+- [x] Comprehending the Solana Architecture 
+- [x] Coming up with the contract logic 
+- [x] Time constraints 
+- [x] Designing the frontend 😑  
+- [x] Generating the certificate
+- [ ] Make the UI/UX better
+- [ ] Send Marriage Request
+- [ ] Listen to transactions made by spouse without refresh
+- [ ] Stay tuned for more
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Sameer Kashyap - [@Sameerkash](https://github.com/Sameerkash)<br/>
+Subhendu Maji - [@subhendu17620](https://github.com/subhendu17620)<br/>
+Tanishq Porwar - [@TanishqPorwar](https://github.com/TanishqPorwar)
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/SOLTOTHEMOON/Wedding-Chain.svg?style=for-the-badge
+[contributors-url]: https://github.com/SOLTOTHEMOON/Wedding-Chain/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/SOLTOTHEMOON/Wedding-Chain.svg?style=for-the-badge
+[forks-url]: https://github.com/SOLTOTHEMOON/Wedding-Chain/network/members
+[stars-shield]: https://img.shields.io/github/stars/SOLTOTHEMOON/Wedding-Chain.svg?style=for-the-badge
+[stars-url]: https://github.com/SOLTOTHEMOON/Wedding-Chain/stargazers
+[issues-shield]: https://img.shields.io/github/issues/SOLTOTHEMOON/Wedding-Chain.svg?style=for-the-badge
+[issues-url]: https://github.com/SOLTOTHEMOON/Wedding-Chain/issues
+[license-shield]: https://img.shields.io/github/license/SOLTOTHEMOON/Wedding-Chain.svg?style=for-the-badge
+[license-url]: https://github.com/SOLTOTHEMOON/Wedding-Chain/blob/master/LICENSE.txt
