@@ -18,7 +18,9 @@
   margin: 0 5px;
   cursor: pointer;
 }
-
+.dashboard-link {
+  margin: 0 2rem;
+}
 .logo-wrapper {
   font-style: italic;
 }

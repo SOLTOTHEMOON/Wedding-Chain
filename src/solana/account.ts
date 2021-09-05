@@ -1,4 +1,4 @@
-import { Connection, PublicKey, SystemProgram } from "@solana/web3.js";
+import { Connection, PublicKey, SystemProgram,   } from "@solana/web3.js";
 import { programId } from "./program";
 import {
   setPayerAndBlockhashTransaction,
@@ -57,4 +57,7 @@ export async function getMarriageAccountPubkey(
     marriageAccountPubkey.toBase58()
   );
   return marriageAccountPubkey;
+
+
+
 }

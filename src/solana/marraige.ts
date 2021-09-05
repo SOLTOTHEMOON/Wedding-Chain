@@ -178,6 +178,10 @@ class MarriageService {
       return new ArweaveMarriage(
         msg.spouse1,
         msg.spouse2,
+        msg.spouse1Name,
+        msg.spouse2Name,
+        msg.spouse1pubKey,
+        msg.spouse2pubKey,
         msg.status,
         msg.consent,
         msg.created_at,

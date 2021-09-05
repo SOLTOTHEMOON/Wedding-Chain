@@ -6,6 +6,10 @@ import { WalletAdapter } from "../solana/wallet";
 export const makeMarriageTrans = async (
   myAccountKey: string,
   destPubkeyStr: string,
+  spouse1Name: string,
+  spouse2Name: string,
+  spouse1pubKey: string,
+  spouse2pubKey: string,
   status: number,
   consent: boolean,
   connection: Connection,
@@ -15,6 +19,10 @@ export const makeMarriageTrans = async (
     new ArweaveMarriage(
       myAccountKey, // spouse1
       destPubkeyStr, // sposue 2
+      spouse1Name,
+      spouse2Name,
+      spouse1pubKey,
+      spouse2pubKey,
       status,
       consent,
       Date.now().toString(),

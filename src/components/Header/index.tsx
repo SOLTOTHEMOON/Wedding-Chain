@@ -55,6 +55,13 @@ export default function Header() {
                             <Link to="/dashboard">
                                 Dashboard
                             </Link>
+
+                        </div>
+                        <div className="dashboard-link">
+
+                            <Link to="/certificate">
+                                Certificate
+                            </Link>
                         </div>
                         <div className="pub-key">
                             <p>
