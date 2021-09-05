@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Team from "./components/Team";
-import Certificate from "./components/Certificate";
+import { Certificate } from "./components/Certificate";
 import GetSpouse from "./components/GetSpouse";
 
 import { ArweaveMarriage } from "./arweave/arweave";
@@ -24,7 +24,9 @@ function App() {
   >([]);
 
   return (
-    <AccountContext.Provider value={{ account: accountInfo, setAccount, spouseAccountKey }}>
+    <AccountContext.Provider
+      value={{ account: accountInfo, setAccount, spouseAccountKey }}
+    >
       <div className="App">
         <Header />
 
@@ -34,43 +36,36 @@ function App() {
             <About />
             <Team />
           </Route>
-
-          {
-            spouseAccountKey.length === 0 &&
-            <Route path="/get_spouse">
-              <GetSpouse setSpouseAccountKey={setSpouseAccountKey} setspouseMarriageHistory={setspouseMarriageHistory} setMarriageHistory={setMarriageHistory} />
-            </Route>
-          }
-
-          {accountInfo && (
-
-            <><Route path="/dashboard">
-              <Dashboard
-                spouseAccountKey={spouseAccountKey}
-                setSpouseAccountKey={setSpouseAccountKey}
-              />
-            </Route>
-              <Route path="/certificate">
-                <Certificate />
-              </Route>
-            </>)
-          }
-
+          (
+          <Route path="/get_spouse">
+            <GetSpouse
+              setSpouseAccountKey={setSpouseAccountKey}
+              setspouseMarriageHistory={setspouseMarriageHistory}
+              setMarriageHistory={setMarriageHistory}
+            />
+          </Route>
+          )
+          <Route path="/dashboard">
+            <Dashboard
+              spouseAccountKey={spouseAccountKey}
+              setSpouseAccountKey={setSpouseAccountKey}
+              marriageHistory={marriageHistory}
+              spouseMarriageHistory={spouseMarriageHistory}
+              setMarriageHistory={setMarriageHistory}
+              setspouseMarriageHistory={setspouseMarriageHistory}
+            />
+          </Route>
+          <Route path="/certificate">
+            <Certificate
+              marriage={marriageHistory[marriageHistory.length - 1]}
+            />
+          </Route>
           <Route path="*">
             <p>404 | Page not Found</p>
-          </Route >
-        </Switch >
-        <Footer />
-        {/* <div>{accountInfo?.accountPubKey}</div> */}
-        {/* <Dashboard /> */}
-
-        {/* <div>
-      <button onClick={connectSollet}>Connect wallet</button>
+          </Route>
+        </Switch>
       </div>
-     */}
-      </div >
-
-    </AccountContext.Provider >
+    </AccountContext.Provider>
   );
 }
 
