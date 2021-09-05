@@ -11,8 +11,10 @@ interface Account {
 const AccountContext = createContext<{
   account?: Account;
   setAccount: Function;
+  spouseAccountKey: string ;
 }>({
   account: undefined,
+  spouseAccountKey: "",
   setAccount: () => { },
 });
 

@@ -10,7 +10,6 @@ import { ArweaveMarriage } from "../../arweave/arweave";
 interface IDashboardOption1Props {
   account: AccountDetails;
   spouseAccountKey: string;
-  setSpouseAccountKey: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface IDashboardOption2Props {
@@ -23,16 +22,14 @@ interface IDashboardTimelineProps {
 }
 
 export const DashboardOptions: React.FunctionComponent<{}> = () => {
-  const [spouseAccountKey, setSpouseAccountKey] = useState<string>("H4ZZgB1oKRMgZpGrXEC1SyBmwrxqNG2q1xNLixwqCanh");
 
   return (
     <AccountContext.Consumer>
-      {({ account }) => (
+      {({ account, spouseAccountKey }) => (
         <>
           <DashboardOptions1
             account={account!}
             spouseAccountKey={spouseAccountKey}
-            setSpouseAccountKey={setSpouseAccountKey}
           />
           <DashboardOptions2
             account={account!}
@@ -46,9 +43,9 @@ export const DashboardOptions: React.FunctionComponent<{}> = () => {
 };
 
 export const DashboardOptions1: React.FunctionComponent<IDashboardOption1Props> =
-  ({ account, spouseAccountKey, setSpouseAccountKey }) => {
+  ({ account, spouseAccountKey }) => {
     const sendConsent = () => {
-      console.log({ account, spouseAccountKey, setSpouseAccountKey });
+      console.log({ account, spouseAccountKey });
 
       // makeMarriageTrans(
       //   account.accountPubKey,
@@ -67,14 +64,7 @@ export const DashboardOptions1: React.FunctionComponent<IDashboardOption1Props> 
             Looks like you are up for a Marriage, please enter your spouse's
             account key
           </div>
-          <div className="input-box">
-            <input
-              className="spouse-acc-input"
-              type="text"
-              placeholder="Spouse Account Key"
-              onChange={(e) => setSpouseAccountKey(e.target.value)}
-            />
-          </div>
+
           <div className="body-text">
             Your wedding marks the beginning of your long journey together. Your
             wedding ring is a circle—a symbol of love never ending. It is the

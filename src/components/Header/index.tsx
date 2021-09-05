@@ -34,7 +34,7 @@ export default function Header() {
                     });
 
                     console.log("account", account);
-                    history.push("/dashboard")
+                    history.push("/get_spouse")
                 });
             }
         });

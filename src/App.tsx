@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import "./App.css";
 
 import { AccountContext, AccountDetails } from "./utils/accountContext";
@@ -10,18 +11,23 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import Team from "./components/Team";
 import Certificate from "./components/Certificate";
+import GetSpouse from "./components/GetSpouse";
 
-// import { ArweaveMarriage } from "./arweave/arweave";
+import { ArweaveMarriage } from "./arweave/arweave";
 function App() {
   const [accountInfo, setAccount] = useState<AccountDetails>();
-  const [spouseAccountKey, setSpouseAccountKey] = useState<string>("H4ZZgB1oKRMgZpGrXEC1SyBmwrxqNG2q1xNLixwqCanh");
+  const [spouseAccountKey, setSpouseAccountKey] = useState<string>("");
 
-
+  const [marriageHistory, setMarriageHistory] = useState<ArweaveMarriage[]>([]);
+  const [spouseMarriageHistory, setspouseMarriageHistory] = useState<
+    ArweaveMarriage[]
+  >([]);
 
   return (
-    <AccountContext.Provider value={{ account: accountInfo, setAccount }}>
+    <AccountContext.Provider value={{ account: accountInfo, setAccount, spouseAccountKey }}>
       <div className="App">
         <Header />
+
         <Switch>
           <Route exact path="/">
             <Hero />
@@ -29,19 +35,29 @@ function App() {
             <Team />
           </Route>
 
-          <Route path="/dashboard">
-            <Dashboard
-              spouseAccountKey={spouseAccountKey}
-              setSpouseAccountKey={setSpouseAccountKey}
-            />
-          </Route>
+          {
+            spouseAccountKey.length === 0 &&
+            <Route path="/get_spouse">
+              <GetSpouse setSpouseAccountKey={setSpouseAccountKey} setspouseMarriageHistory={setspouseMarriageHistory} setMarriageHistory={setMarriageHistory} />
+            </Route>
+          }
 
-          <Route path="/certificate">
-            <Certificate />
-          </Route>
+          {accountInfo && (
+
+            <><Route path="/dashboard">
+              <Dashboard
+                spouseAccountKey={spouseAccountKey}
+                setSpouseAccountKey={setSpouseAccountKey}
+              />
+            </Route>
+              <Route path="/certificate">
+                <Certificate />
+              </Route>
+            </>)
+          }
 
           <Route path="*">
-            <p>Page not Found</p>
+            <p>404 | Page not Found</p>
           </Route >
         </Switch >
         <Footer />

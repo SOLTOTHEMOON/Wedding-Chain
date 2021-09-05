@@ -2,7 +2,7 @@ import { Connection } from "@solana/web3.js";
 import { ArweaveMarriage, arweaveService } from "../arweave/arweave";
 import marriageService from "../solana/marraige";
 import { WalletAdapter } from "../solana/wallet";
-
+import { AccountDetails } from "./accountContext";
 export const makeMarriageTrans = async (
   myAccountKey: string,
   destPubkeyStr: string,
@@ -61,4 +61,20 @@ export const getMarriageTimeline = async (
     console.log("error", error);
     return [];
   }
+};
+
+export const getHistory = async (account:AccountDetails,spouseAccountKey:string, setspouseMarriageHistory:React.Dispatch<React.SetStateAction<ArweaveMarriage[]>>, setMarriageHistory:React.Dispatch<React.SetStateAction<ArweaveMarriage[]>>) => {
+  const result = await getMarriageTimeline(
+    account?.connection.current!,
+    account?.accountPubKey!
+  );
+
+  const spouseResult = await getMarriageTimeline(
+    account?.connection.current!,
+    spouseAccountKey
+  );
+
+  setMarriageHistory(result);
+  setspouseMarriageHistory(spouseResult);
+
 };

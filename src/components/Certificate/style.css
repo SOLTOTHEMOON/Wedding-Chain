@@ -79,33 +79,6 @@
   background: #3a3d3e;
 }
 
-@media (min-width: 992px) {
-  h1 {
-    font-size: 2.75em;
-  }
-}
-
-@media (min-width: 1200px) {
-  h1 {
-    font-size: 3em;
-    letter-spacing: 5px;
-  }
-}
-
-@media (min-width: 992px) {
-  .lead {
-    font-size: 2rem;
-    padding-top: 0.5em;
-  }
-}
-
-@media (min-width: 1200px) {
-  .lead {
-    font-size: 2.5rem;
-    padding-top: 1em;
-  }
-}
-
 .inner-border1 {
   display: flex;
   justify-content: center;

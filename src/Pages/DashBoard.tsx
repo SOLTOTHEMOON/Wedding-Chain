@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ArweaveMarriage } from "../arweave/arweave";
 import { DashboardOptions } from "../components/DashboardOptions";
+import Timeline from "../Timeline";
 import { AccountContext } from "../utils/accountContext";
 import { getMarriageTimeline } from "../utils/marriageUtils";
 
@@ -71,6 +72,7 @@ export const Dashboard: React.FunctionComponent<IDashBoardProps> = ({
   return (
     <div>
       <DashboardOptions />
+      <Timeline />
     </div>
   );
 };
