@@ -2,7 +2,7 @@ import React from 'react'
 import transparency from "../../assets/transparency.svg"
 import traceability from "../../assets/traceability.svg"
 import smart_contracts_security from "../../assets/smart_contracts_security.svg"
-
+import { Slide } from "react-awesome-reveal"
 
 import "./style.css"
 
@@ -59,17 +59,18 @@ export default function About() {
                 </h1>
                 <div className="benefit-card-container">
                     {cardData.map((card, index) => (
+                        <Slide className="about-card" key={index} triggerOnce>
+                            <div >
 
-                        <div className="about-card" key={index}>
+                                <div className="about-img">
+                                    <img src={card.image} alt={card.title} />
+                                </div>
 
-                            <div className="about-img">
-                                <img src={card.image} alt="transparency" />
+                                <h2>{card.title}</h2>
+                                <p>
+                                    {card.description}</p>
                             </div>
-
-                            <h2>{card.title}</h2>
-                            <p>
-                                {card.description}</p>
-                        </div>
+                        </Slide>
                     ))}
 
 

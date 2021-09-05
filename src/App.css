@@ -64,12 +64,13 @@
 }
 
 button {
-  background: #ffdeb3;
-  color: #6a491d;
+  background: #2a767f;
+
+  color: #fff;
   border-spacing: none;
   padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 3px;
+  font-size: 1.3rem;
+  border-radius: 5px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -77,8 +78,9 @@ button {
 }
 
 button:hover {
-  background: #e4b16e;
-  transition: 0.3s;
+  background: #ffdeb3;
+  transition: 0.5s;
+  color: #2a767f;
 }
 
 a {
@@ -90,4 +92,17 @@ a {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.pulse {
+  animation: pulse-animation 1s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(42, 42, 42, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+  }
 }

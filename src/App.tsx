@@ -11,6 +11,9 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
+import Team from "./components/Team";
+// import Certificate from "./components/Certificate";
+
 function App() {
 
   const [accountInfo, setAccount] = useState<AccountDetails>();
@@ -43,13 +46,14 @@ function App() {
   return (
     <AccountContext.Provider value={{ account: accountInfo, setAccount }}>
       <div className="App">
-
         <Header />
+        {/* <Certificate /> */}
         <Switch>
 
           <Route exact path="/">
             <Hero />
             <About />
+            <Team />
           </Route>
 
           <Route path="/dashboard">
@@ -57,7 +61,7 @@ function App() {
           </Route>
 
           <Route path="*">
-            <p>PAge not Found</p>
+            <p>404 | Page not Found</p>
           </Route>
         </Switch>
         <Footer />
@@ -69,6 +73,7 @@ function App() {
       </div>
      */}
       </div>
+
     </AccountContext.Provider >
   );
 }

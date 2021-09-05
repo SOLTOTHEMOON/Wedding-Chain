@@ -66,7 +66,7 @@ export default function Header() {
                             </div>
                         </div>
                     </div> :
-                    <button onClick={connectSollet}>
+                    <button onClick={connectSollet} className="pulse">
                         Get Started
                     </button>
                 }
