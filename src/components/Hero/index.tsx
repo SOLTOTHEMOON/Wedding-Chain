@@ -24,7 +24,7 @@ export default function Hero() {
                     <div className="hero">
                         <h1 className="hero-text">
                             Get Married <br />
-                            on Chain
+                            on Chain.
                         </h1>
 
 

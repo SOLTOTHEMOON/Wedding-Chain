@@ -28,7 +28,10 @@ function App() {
       value={{ account: accountInfo, setAccount, spouseAccountKey }}
     >
       <div className="App">
-        <Header />
+        <Header spouseAccountKey={spouseAccountKey}
+          setspouseMarriageHistory={setspouseMarriageHistory}
+          setMarriageHistory={setMarriageHistory}
+        />
 
         <Switch>
           <Route exact path="/">
@@ -36,7 +39,6 @@ function App() {
             <About />
             <Team />
           </Route>
-          (
           <Route path="/get_spouse">
             <GetSpouse
               setSpouseAccountKey={setSpouseAccountKey}
@@ -44,7 +46,6 @@ function App() {
               setMarriageHistory={setMarriageHistory}
             />
           </Route>
-          )
           <Route path="/dashboard">
             <Dashboard
               spouseAccountKey={spouseAccountKey}
@@ -64,6 +65,7 @@ function App() {
             <p>404 | Page not Found</p>
           </Route>
         </Switch>
+        <Footer />
       </div>
     </AccountContext.Provider>
   );

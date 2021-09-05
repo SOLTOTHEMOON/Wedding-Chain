@@ -9,7 +9,7 @@ const cardData = [
         title: "Sameer Kashyap",
         image: "https://avatars.githubusercontent.com/u/40424087",
         github: "https://github.com/Sameerkash",
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/sameer-kashyap-083a89184/",
 
     },
     {
@@ -22,7 +22,7 @@ const cardData = [
         title: "Tanishq R Porwar",
         image: "https://avatars.githubusercontent.com/u/45430401",
         github: "https://github.com/TanishqPorwar",
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/tanishq-porwar-52744b191/",
     }
 ]
 

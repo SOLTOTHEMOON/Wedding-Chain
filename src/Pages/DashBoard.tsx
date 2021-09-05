@@ -6,7 +6,6 @@ import {
 } from "../components/DashboardOptions";
 import { Timeline } from "../components/Timeline";
 import { AccountContext } from "../utils/accountContext";
-import { getMarriageTimeline } from "../utils/marriageUtils";
 interface IDashBoardProps {
   spouseAccountKey: string;
   setSpouseAccountKey: React.Dispatch<React.SetStateAction<string>>;
@@ -19,14 +18,12 @@ interface IDashBoardProps {
 }
 
 export const Dashboard: React.FunctionComponent<IDashBoardProps> = ({
-  spouseAccountKey,
-  setSpouseAccountKey,
+
   marriageHistory,
   spouseMarriageHistory,
   setspouseMarriageHistory,
   setMarriageHistory,
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
 
   console.log({ marriageHistory, spouseMarriageHistory });
   // check whose trnsaction timestamp is earlier
@@ -57,7 +54,9 @@ export const Dashboard: React.FunctionComponent<IDashBoardProps> = ({
     );
   } else if (checkstatus === 1 || checkSpouseStatus === 1) {
     // show divorce, anulled
-    return <Timeline marriages={marriageHistory} />;
+    return <Timeline marriages={[...marriageHistory, ...spouseMarriageHistory]} />;
+
+
   } else if (checkstatus === 2 || checkstatus === 3) {
     console.log("show new marriage");
   } else {
@@ -89,5 +88,5 @@ export const Dashboard: React.FunctionComponent<IDashBoardProps> = ({
             account={account!}
             spouseAccountKey={spouseAccountKey}
           />
-          
+
 */

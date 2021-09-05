@@ -7,8 +7,11 @@ import { getMarriageAccountPubkey } from "../../solana/account";
 import marriageService from "../../solana/marraige";
 import { MdContentCopy } from "react-icons/md";
 import './style.css'
+import { getHistory } from "../../utils/marriageUtils";
 
-export default function Header() {
+export default function Header({ spouseAccountKey,
+    setspouseMarriageHistory,
+    setMarriageHistory }: any) {
     const conn = React.useRef<Connection>();
 
 
@@ -44,7 +47,7 @@ export default function Header() {
             <Link to={"/"}>
 
                 <div className="logo-wrapper">
-                    <h1>Chain-Marriage</h1>
+                    <h1>Shaadi Dapp</h1>
                 </div>
 
             </Link>
@@ -72,6 +75,16 @@ export default function Header() {
                                 <MdContentCopy />
                             </div>
                         </div>
+                        <button className="dashboard-link" onClick={() => {
+                            getHistory(
+                                account,
+                                spouseAccountKey,
+                                setspouseMarriageHistory,
+                                setMarriageHistory
+                            );
+                        }}>
+                            Refresh
+                        </button>
                     </div> :
                     <button onClick={connectSollet} className="pulse">
                         Get Started
