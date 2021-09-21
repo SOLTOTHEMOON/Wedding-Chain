@@ -18,7 +18,7 @@
     <a href="https://github.com/SOLTOTHEMOON/Wedding-Chain#readme"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/SOLTOTHEMOON/Wedding-Chain">View Demo</a>
+    <a href="https://youtu.be/no-PkwVDby0">View Demo</a>
     ·
     <a href="https://github.com/SOLTOTHEMOON/Wedding-Chain/issues">Report Bug</a>
     ·
